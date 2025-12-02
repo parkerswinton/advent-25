@@ -4,6 +4,11 @@ import os
 import subprocess
 
 default_text = """#!/usr/bin/env python3
+import os
+
+
+input_file = os.path.join(os.path.dirname(
+    os.path.abspath(__file__)), "input_mock.txt")
 
 def main():
     print("DEFAULT")
