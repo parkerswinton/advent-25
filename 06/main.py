@@ -36,7 +36,38 @@ def part1():
 
 
 def part2():
-    print(parseInput2())
+    data = parseInput2()
+    total = 0
+
+    currOperation = data[-1][0]
+    currTotal = 1
+
+    for colIndex in range(len(data[0])):
+        nums = []
+
+        if not data[-1][colIndex] == ' ':
+            currOperation = data[-1][colIndex]
+            if currOperation == "+":
+                currTotal = 0
+            else:
+                currTotal = 1
+
+        for rowIndex in range(len(data) - 1):
+            if not data[rowIndex][colIndex] == " ":
+                nums.append(data[rowIndex][colIndex])
+
+        if len(nums) == 0:
+            total += currTotal
+            continue
+
+        num = int("".join(nums))
+
+        if currOperation == "+":
+            currTotal += num
+        else:
+            currTotal *= num
+
+    print(total)
 
 
 def main():
